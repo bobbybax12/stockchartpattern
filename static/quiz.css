@@ -20,6 +20,11 @@
     justify-content: center;
     text-align: center;
 }
+
 .some-pad {
     padding-top: 50px;
+}
+.more-pad {
+    /* to align buttons */
+    padding-bottom: 84px;
 }

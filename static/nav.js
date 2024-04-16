@@ -1,7 +1,6 @@
 
 function navHighlight() {
     let path = window.location.pathname;
-    console.log(path);
     let x = path.split("/");
     let page = x[1];
     let num = -1;

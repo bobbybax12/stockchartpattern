@@ -3,6 +3,7 @@
 {% block content %}
 <script>
     let id = {{ id }};
+    let data = {{ data | safe }};
 </script>
 <script src="{{ url_for('static', filename='quiz.js') }}"></script>
 <link rel="stylesheet" href="{{ url_for('static', filename='quiz.css') }}">

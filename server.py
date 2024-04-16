@@ -4,7 +4,10 @@ from flask import Response, request, jsonify
 import json
 app = Flask(__name__)
 
+with open('static/qim.json') as f:
+   qim = json.load(f)
 data = {}
+
 # ROUTES
 @app.route('/')
 def welcome():
@@ -16,7 +19,7 @@ def learn(id):
 
 @app.route('/quiz/<id>')
 def quiz(id):
-   return render_template('quiz.html', id=id)
+   return render_template('quiz.html', id=id, data=qim)
 
 if __name__ == '__main__':
    app.run(debug = True)
