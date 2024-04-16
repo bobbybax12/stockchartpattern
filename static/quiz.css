@@ -28,3 +28,32 @@
     /* to align buttons */
     padding-bottom: 84px;
 }
+
+.bordered {
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+}
+.bull {
+    display: flex;
+    align-items: center;
+    background-color: green;
+    text-align: center;
+    justify-content: center;
+    height: 225px;
+}
+.bear {
+    display: flex;
+    align-items: center;
+    background-color: red;
+    text-align: center;
+    justify-content: center;
+    height: 225px;
+}
+.big {
+    font-size: 32px;
+}
+.error {
+    font-size: 20px;
+}

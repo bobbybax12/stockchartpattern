@@ -61,7 +61,7 @@ function render1(data) {
     let dropdown_options = data["4"];
     let dropdown = `
                 <select class="form-select" aria-label="Default select example">
-                    <option selected disabled>Select an option</option>
+                    <option selected disabled value="">Select an option</option>
                     <option value="1">${dropdown_options[0]}</option>
                     <option value="2">${dropdown_options[1]}</option>
                     <option value="3">${dropdown_options[2]}</option>
@@ -111,8 +111,31 @@ function render2(data) {
                 <div class="content-header"> Bearish or Bullish? </div>
             </div>
         </div>
-        TODO - Draggable options
-        TODO - Dropzone
+        <div class="row" id= "add-after-here">
+            <div class="col-md-3 center">
+                <div class="draggable bordered" id="drag1">${draggable_options[0]}</div>
+            </div>
+            <div class="col-md-3 center">
+                <div class="draggable bordered" id="drag2">${draggable_options[1]}</div>
+            </div>
+            <div class="col-md-3 center">
+                <div class="draggable bordered" id="drag3">${draggable_options[2]}</div>
+            </div>
+            <div class="col-md-3 center">
+                <div class="draggable bordered" id="drag4">${draggable_options[3]}</div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="dropable bull bordered" id="drop1"></div>
+                <div class="center big">Bullish</div>
+            </div>
+            <div class="col-md-6">
+                <div class="dropable bear bordered" id="drop2"></div>
+                <div class="center big">Bearish</div>
+            </div>
+        </div>
         <div class="row some-pad">
             <div class="col-md-4 center">
                 <button class="btn btn-secondary" onclick="goBack(2)"> Previous </button>
@@ -124,8 +147,42 @@ function render2(data) {
         </div>
     `;
     $('#content').html(html);
+
+    $( ".draggable" ).draggable({
+        revert: 'invalid'
+    });
+    $( ".dropable" ).droppable({
+        accept: '.draggable',
+        drop: function(event, ui) {
+            $(this).append(ui.draggable.css({
+                position: 'relative',
+                left: '0px',
+                top: '0px'
+            }));
+        }
+    });
 }
 function render3() {
+    let html = `
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content-header"> Buy or Sell? </div>
+            </div>
+        </div>
+        TODO - Buttons Images and Input Validity Check
+        <div class="row some-pad">
+            <div class="col-md-4 center">
+                <button class="btn btn-secondary" onclick="goBack(3)"> Previous </button>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4 center">
+                <button class="btn btn-success" onclick="goNext(3)"> Submit </button>
+            </div>
+        </div>
+    </div>
+    `;
+    $('#content').html(html);
 }
 
 
@@ -148,19 +205,78 @@ function goNext(id) {
         window.location.href = '/quiz/1';
     }
     else if (id == 1) {
-        submitUserAnswer();
-        window.location.href = '/quiz/2';
+        if (submitUserAnswer(id)) {
+            window.location.href = '/quiz/2';
+        }
     }
     else if (id == 2) {
-        submitUserAnswer();
+        if (submitUserAnswer(id)) {
         window.location.href = '/quiz/3';
+        }
     }
     else if (id == 3) {
-        submitUserAnswer();
+        submitUserAnswer(id);
     }
 }
-function submitUserAnswer() {
+function submitUserAnswer(id) {
+    if (!validityCheck(id)) {
+        return false;
+    }
     //ajas post request to submit user answer
+    return true;
+}
+
+function validityCheck(id) {
+    //check if user has selected an answer
+    let isValid = true;
+    if (id ==1) {
+        // find all select elements
+        let selects = document.getElementsByTagName('select');
+        for (let i = 0; i < selects.length; i++) {
+            if (selects[i].value == '') {
+                // make red border around select element
+                selects[i].style.border = "1px solid red";
+                // add error message below select element if not already there
+                let errorMessage = document.createElement('div');
+                errorMessage.innerHTML = "Please select an option";
+                if (selects[i].parentNode.getElementsByTagName('div').length == 0) {
+                    selects[i].parentNode.appendChild(errorMessage);
+                }
+                isValid = false;
+            }
+            // remove error message if user selects an option
+            // remove red border
+            else {
+                selects[i].style.border = "1px solid black";
+                let errorMessage = selects[i].parentNode.getElementsByTagName('div');
+                if (errorMessage.length > 0) {
+                    selects[i].parentNode.removeChild(errorMessage[0]);
+                }
+            }
+        }
+    }
+    else if (id == 2) {
+        // check if user has dragged all options
+        let drop1 = $('#drop1');
+        let drop2 = $('#drop2');
+        if (drop1.children().length + drop2.children().length < 4) {
+            let errorMessage = `<div class="center error"> Please drag all options </div>`;
+
+            // check if error message already exists
+            if ($('#add-after-here').next().next().next().length == 0) {
+                $('#add-after-here').after(errorMessage);
+            }
+            
+            isValid = false;
+        }
+        else {
+            // check if error message exists and remove it
+            if ($('#add-after-here').next().next().next().length > 0) {
+                $('#add-after-here').next().next().next().remove();
+            }
+        }
+}
+    return isValid;
 }
 
 $(document).ready(function() {
