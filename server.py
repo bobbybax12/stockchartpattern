@@ -17,6 +17,7 @@ def learn(id):
 @app.route('/quiz/<id>')
 def quiz(id):
    return render_template('quiz.html', id=id)
+
 if __name__ == '__main__':
    app.run(debug = True)
 

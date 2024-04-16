@@ -4,7 +4,9 @@
 <script>
     let id = {{ id }};
 </script>
+<script src="{{ url_for('static', filename='quiz.js') }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='quiz.css') }}">
 
-Hi Quiz id: {{ id }}
+<div id="content"></div>
 
 {% endblock %}
