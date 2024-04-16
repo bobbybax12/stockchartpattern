@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="icon" href="data:,">
+
+  <!-- jquery -->
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>  
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+
+  <script src="{{url_for('static', filename='nav.js')}}"></script>
+    <title>Pattern Trader</title>
+  </head>
+  <body>
+    <div class="container n-bar">
+      <div class="row">
+        <div class="col-md-2 n-item">
+          <a href="/" class="n-color" id="n-home">
+            Home
+          </a>
+        </div>
+        <div class="col-md-2 n-item">
+          <a href="/learn/0" class="n-color" id="n-basics">
+            The Basics
+          </a>
+        </div>
+        <div class="col-md-2 n-item">
+          <a href="/learn/2" class="n-color" id="n-patterns">
+            Chart Patterns
+          </a>
+        </div>
+        <div class="col-md-2 n-item">
+          <a href="/learn/9" class="n-color" id="n-trading">
+            How to Trade
+          </a>
+        </div>
+        <div class="col-md-2 n-item">
+          <a href="/quiz/0" class="n-color" id="n-quiz">
+            Quiz
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="container">   
+        {% block content %}
+        {% endblock %}
+    </div>
+
+  </body>
+</html>
+
+
+
+

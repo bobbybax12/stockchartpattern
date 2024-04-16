@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<script>
+    let data = {{ data | tojson}};
+</script>
+
+<div class="welcome">
+    Welcome to Pattern Trader!
+</div>
+
+{% endblock %}
