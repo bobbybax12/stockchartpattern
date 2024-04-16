@@ -9,7 +9,10 @@ function renderpage(id, data) {
         render2(data);
     }
     else if (id == 3) {
-        render3();
+        render3(data);
+    }
+    else if (id == 4) {
+        render4(data);
     }
 }
 
@@ -162,7 +165,9 @@ function render2(data) {
         }
     });
 }
-function render3() {
+function render3(data) {
+    let im6_src = data["6"];
+    let im7_src = data["7"];
     let html = `
     <div class="container">
         <div class="row">
@@ -170,7 +175,42 @@ function render3() {
                 <div class="content-header"> Buy or Sell? </div>
             </div>
         </div>
-        TODO - Buttons Images and Input Validity Check
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6 center">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="image6" id="buyImage6" value="buy" checked>
+                            <label class="form-check-label" for="buyImage6">Buy</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="image6" id="sellImage6" value="sell">
+                            <label class="form-check-label" for="sellImage6">Sell</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 center">
+                        <img src="${im6_src}" class="img-fluid" alt="Image 6">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6 center">
+                        <img src="${im7_src}" class="img-fluid" alt="Image 7">
+                    </div>
+                    <div class="col-md-6 center">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="image7" id="buyImage7" value="buy" checked>
+                            <label class="form-check-label" for="buyImage7">Buy</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="image7" id="sellImage7" value="sell">
+                            <label class="form-check-label" for="sellImage7">Sell</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row some-pad">
             <div class="col-md-4 center">
                 <button class="btn btn-secondary" onclick="goBack(3)"> Previous </button>
@@ -185,6 +225,38 @@ function render3() {
     $('#content').html(html);
 }
 
+function render4(data) {
+    let score = data['8'];
+    let html = `
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content-header"> Your Score </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Final Score</h5>
+                        <p class="card-text text-center display-4">${score}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row some-pad">
+            <div class="col-md-4 center">
+                <button class="btn btn-secondary" onclick="goBack(4)"> Previous </button>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4 center">
+                <button class="btn btn-success" onclick="goNext(4)"> Finish </button>
+            </div>
+        </div>
+    </div>
+    `;
+    $('#content').html(html);
+}
 
 function goBack(id) {
     if (id == 0) {
@@ -198,6 +270,9 @@ function goBack(id) {
     }
     else if (id == 3) {
         window.location.href = '/quiz/2';
+    }
+    else if (id == 4) {
+        window.location.href = '/quiz/3';
     }
 }
 function goNext(id) {
@@ -215,7 +290,12 @@ function goNext(id) {
         }
     }
     else if (id == 3) {
-        submitUserAnswer(id);
+        if (submitUserAnswer(id)) {
+        window.location.href = '/quiz/4';
+        }
+    }
+    else if (id == 4) {
+        submitUserAnswer(id)
     }
 }
 function submitUserAnswer(id) {
