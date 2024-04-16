@@ -1,0 +1,20 @@
+.n-bar {
+    background-color: #333;
+    padding: 10px;
+    text-align: center;
+}
+.n-item {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 20px 5px;
+}
+.n-color {
+    color: #fff;
+    font-size: 20px;
+}
+
+.n-current {
+    color : rgb(96, 228, 13);
+    font-size : 20px;
+    /* picked random feel free to change */
+}
