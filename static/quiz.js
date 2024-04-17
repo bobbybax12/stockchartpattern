@@ -224,7 +224,6 @@ function render3(data) {
     `;
     $('#content').html(html);
 }
-
 function render4(data) {
     let score = data['8'];
     let html = `
@@ -257,7 +256,6 @@ function render4(data) {
     `;
     $('#content').html(html);
 }
-
 function goBack(id) {
     if (id == 0) {
         window.location.href = '/learn/12';
@@ -291,7 +289,7 @@ function goNext(id) {
     }
     else if (id == 3) {
         if (submitUserAnswer(id)) {
-        window.location.href = '/quiz/4';
+        window.location.href = '/quiz/score';
         }
     }
     else if (id == 4) {
@@ -351,8 +349,6 @@ function validityCheck(id) {
 }
     return isValid;
 }
-
-
 function submitUserAnswer(id) {
     if (!validityCheck(id)) {
         return false;
@@ -395,7 +391,12 @@ function submitUserAnswer(id) {
         contentType: 'application/json',
         success: function(response) {
             console.log('Answer submitted successfully:', response);
-            // Redirect to next quiz section
+
+    // Store the score or display it to the user
+            let score = response.score;
+            console.log('Score:', score);
+
+    // Redirect to next quiz section
             goNext(id);
             console.log(answerData);
         },
@@ -407,7 +408,6 @@ function submitUserAnswer(id) {
 
     return true;
 }
-
 $(document).ready(function() {
     renderpage(id, data);
 });
