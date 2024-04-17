@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="content-header">Quiz Results</div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Your Score</h5>
+                    <p class="card-text text-center display-4">{{ score }}/10</p>
+                    {% if score >= 8 %}
+                        <p class="text-center text-success">Congratulations! You have a strong understanding of the chart patterns.</p>
+                    {% elif score >= 5 %}
+                        <p class="text-center text-warning">Good job! You have a fair understanding of the chart patterns. Keep practicing to improve your skills.</p>
+                    {% else %}
+                        <p class="text-center text-danger">Don't worry! You can improve your understanding of the chart patterns with more practice and study.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row some-pad">
+        <div class="col-md-6 center">
+            <button class="btn btn-secondary" onclick="window.location.href='{{ url_for('welcome') }}'">Back to Home</button>
+        </div>
+        <div class="col-md-6 center">
+            <button class="btn btn-success" onclick="window.location.href='{{ url_for('quiz', id=0) }}'">Retake Quiz</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
