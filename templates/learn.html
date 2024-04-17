@@ -16,7 +16,7 @@
         <ul class="pagination justify-content-between">
             <li class="page-item">
                 {% set next_url = '' %}
-                {% if id > 1 %}
+                {% if id >= 1 %}
                     {% set next_url = url_for('learn', id=id-1) %}
                 {% elif id == 6 %}
                     {% set next_url = url_for('the_basics') %}
