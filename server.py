@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 import json
 
 app = Flask(__name__)
@@ -10,6 +10,7 @@ with open('static/qim.json') as f:
 chart = qim['9']
 trade = qim['10']
 lessons = qim['lessons']
+quiz_results = []
 
 # ROUTES
 @app.route('/')
@@ -34,6 +35,12 @@ def introduction_trade():
 @app.route('/quiz/<int:id>')
 def quiz(id):
     return render_template('quiz.html', id=id, data=qim)
+
+@app.route('/submit_quiz', methods=['POST'])
+def submit_quiz():
+    quiz_data = request.json
+    quiz_results.append(quiz_data)
+    return jsonify({'message': 'Quiz submitted successfully'})
 
 @app.route('/learn/0')
 def the_basics():

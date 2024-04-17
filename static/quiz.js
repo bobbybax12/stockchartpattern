@@ -298,13 +298,6 @@ function goNext(id) {
         submitUserAnswer(id)
     }
 }
-function submitUserAnswer(id) {
-    if (!validityCheck(id)) {
-        return false;
-    }
-    //ajas post request to submit user answer
-    return true;
-}
 
 function validityCheck(id) {
     //check if user has selected an answer
@@ -357,6 +350,63 @@ function validityCheck(id) {
         }
 }
     return isValid;
+}
+
+
+
+function submitUserAnswer(id) {
+    if (!validityCheck(id)) {
+        return false;
+    }
+
+    // Prepare data to submit
+    let answerData = {};
+    if (id === 1) {
+        // Get selected options from dropdowns
+        let selects = document.getElementsByTagName('select');
+        for (let i = 0; i < selects.length; i++) {
+            let questionId = selects[i].getAttribute('data-question-id');
+            let answer = selects[i].value;
+            answerData[questionId] = answer;
+        }
+    } else if (id === 2) {
+        // Get dropped options in the drag-and-drop section
+        let drop1 = $('#drop1').children().map(function() {
+            return $(this).text();
+        }).get();
+        let drop2 = $('#drop2').children().map(function() {
+            return $(this).text();
+        }).get();
+        answerData['drop1'] = drop1;
+        answerData['drop2'] = drop2;
+    } else if (id === 3) {
+        // Get selected radio button values
+        let radioValues = {};
+        radioValues['image6'] = $('input[name="image6"]:checked').val();
+        radioValues['image7'] = $('input[name="image7"]:checked').val();
+        answerData = radioValues;
+    }
+
+    // Make AJAX post request to submit user answer
+    $.ajax({
+        type: 'POST',
+        url: '/submit_quiz',
+        data: JSON.stringify(answerData),
+        contentType: 'application/json',
+        success: function(response) {
+            // Handle success response
+            console.log('Answer submitted successfully:', response);
+            // Redirect to next quiz section
+            goNext(id);
+        },
+        error: function(xhr, status, error) {
+            // Handle error response
+            console.error('Error submitting answer:', error);
+            // Optionally, display an error message to the user
+        }
+    });
+
+    return true;
 }
 
 $(document).ready(function() {
