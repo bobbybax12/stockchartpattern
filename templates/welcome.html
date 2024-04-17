@@ -1,12 +1,19 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<script>
-    let data = {{ data | tojson}};
-</script>
-
-<div class="welcome">
-    Welcome to Pattern Trader!
+<div class="container mt-5">
+    <div class="row">
+        <div class="col text-center">
+            <h1 class="display-3">PatternTrader</h1>
+            <hr class="my-4">
+            <p class="lead">Welcome to PatternTrader Academy! Dive into the essentials of stock trading with our straightforward guides on chart patterns and practical trading strategies. Whether you're a beginner or looking to sharpen your skills, our focused lessons and interactive quizzes are designed to help you navigate the stock market with confidence. Start your journey to smart trading today!</p>
+            <a href="/learn/0" class="btn btn-success btn-lg">Begin</a>
+        </div>
+        <div class="col">
+            <!-- Image goes here, make sure to link the correct path to your image -->
+            <img src="https://th.bing.com/th/id/OIP.DgJnJDgCcG2P85TuJTtWXAHaFA?rs=1&pid=ImgDetMain" alt="Stock Chart" class="img-fluid">
+        </div>
+    </div>
 </div>
-
 {% endblock %}
+

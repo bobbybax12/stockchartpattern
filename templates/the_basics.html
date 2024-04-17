@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">The Basics</h1>
+    <div class="mt-4">
+        <p class="text-center">(Hover over terms for definitions)</p>
+        <div class="d-flex flex-wrap justify-content-center">
+            <span class="term badge badge-secondary mx-2" data-toggle="tooltip" title="A piece of a company that people can buy, own, or sell.">Stock</span>
+            <span class="term badge badge-secondary mx-2" data-toggle="tooltip" title="The act of purchasing shares in a company.">Buy</span>
+            <span class="term badge badge-secondary mx-2" data-toggle="tooltip" title="The act of selling owned shares in a company.">Sell</span>
+            <span class="term badge badge-secondary mx-2" data-toggle="tooltip" title="Holding stocks or assets over a long period of time.">Long-Term</span>
+            <span class="term badge badge-secondary mx-2" data-toggle="tooltip" title="A measure of time in trading that typically means holding an asset for a short period.">Short-Term</span>
+            <span class="term badge badge-secondary mx-2" data-toggle="tooltip" title="A single unit of ownership in a company or financial asset.">Share</span>
+            <span class="term badge badge-secondary mx-2" data-toggle="tooltip" title="The act of buying or selling in the stock market.">Trade</span>
+        </div>
+    </div>
+    <div class="text-center mt-5">
+        <a href="{{ url_for('welcome') }}" class="btn btn-outline-secondary">Home</a>
+        <a href="{{ url_for('introduction_chart') }}" class="btn btn-outline-success">Chart Patterns</a>
+    </div>
+</div>
+
+{% endblock %}

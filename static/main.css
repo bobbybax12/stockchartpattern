@@ -1,5 +1,8 @@
+body{
+    background-color: aliceblue;
+}
 .n-bar {
-    background-color: #333;
+    background-color: #191818;
     padding: 10px;
     text-align: center;
 }
@@ -16,5 +19,4 @@
 .n-current {
     color : rgb(96, 228, 13);
     font-size : 20px;
-    /* picked random feel free to change */
 }
