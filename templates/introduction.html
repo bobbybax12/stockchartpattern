@@ -1,18 +1,22 @@
 {% extends "layout.html" %}
 
 {% block content %}
+<script>
+    let page = {{ page | tojson }};
+    console.log(page);
+</script>
+<script src="{{ url_for('static', filename='intro.js') }}"></script>
 <div class="container text-center mt-5">
-    <h1 style="font-size: 48px; margin-bottom: 0.5em;">{{ page.title }}</h1>
+    <h1 style="font-size: 48px; margin-bottom: 0.5em;"></h1>
     <hr style="border-top: 2px solid black; width: 60%; margin: 0 auto 20px;">
     <p style="font-size: 18px; line-height: 1.6; margin-bottom: 1.5em;">
-        {{ page.text }}
+        {{ page[1] }}
     </p>
-    <div style="margin-bottom: 2em;">
-        <img src="{{ url_for('static', filename='images/' + page.image) }}" alt="{{ page.title }}" style="max-width: 100%; height: auto;">
+    <div style="margin-bottom: 2em;" id="hm">
     </div>
     <div class="text-center mt-5">
         <a href="{{ url_for('the_basics') }}" class="btn btn-outline-secondary">The Basics</a>
-        <a href="{{ url_for('learn', id=1) }}" class="btn btn-outline-success">First Pattern</a>
+        <a href="{{ url_for('learn', id=page['4']) }}" class="btn btn-outline-success">First Pattern</a>
     </div>
 </div>
 {% endblock %}

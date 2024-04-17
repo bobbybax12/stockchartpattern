@@ -260,7 +260,7 @@ function render4(data) {
 
 function goBack(id) {
     if (id == 0) {
-        window.location.href = '/learn/15';
+        window.location.href = '/learn/12';
     }
     else if (id == 1) {
         window.location.href = '/quiz/0';

@@ -12,18 +12,24 @@ function navHighlight() {
         target = $('#n-home');
     }
     else if (page == 'learn') {
-        if (num < 2) {
+        if (num < 1) {
             target = $('#n-basics');
         }
-        else if (num < 9) {
+        else if (num < 6) {
             target = $('#n-patterns');
         }
         else {
             target = $('#n-trading');
         }
     }
-    else {
+    else if (page == 'quiz') {
         target = $('#n-quiz');
+    }
+    else if (page == 'introduction_chart') {
+        target = $('#n-patterns');
+    }
+    else if (page == 'introduction_trade') {
+        target = $('#n-trading');
     }
     target.removeClass('n-color');
     target.addClass('n-current');
