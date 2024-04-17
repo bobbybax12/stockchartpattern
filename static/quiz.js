@@ -295,7 +295,7 @@ function goNext(id) {
         }
     }
     else if (id == 4) {
-        submitUserAnswer(id)
+        window.location.href = '/';
     }
 }
 
@@ -353,14 +353,14 @@ function validityCheck(id) {
 }
 
 
-
 function submitUserAnswer(id) {
     if (!validityCheck(id)) {
         return false;
     }
 
-    // Prepare data to submit
     let answerData = {};
+
+    // Prepare answerData based on the quiz section
     if (id === 1) {
         // Get selected options from dropdowns
         let selects = document.getElementsByTagName('select');
@@ -394,13 +394,12 @@ function submitUserAnswer(id) {
         data: JSON.stringify(answerData),
         contentType: 'application/json',
         success: function(response) {
-            // Handle success response
             console.log('Answer submitted successfully:', response);
             // Redirect to next quiz section
             goNext(id);
+            console.log(answerData);
         },
         error: function(xhr, status, error) {
-            // Handle error response
             console.error('Error submitting answer:', error);
             // Optionally, display an error message to the user
         }
