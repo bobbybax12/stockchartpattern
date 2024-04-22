@@ -27,8 +27,8 @@ def welcome():
 
 @app.route('/learn/<int:id>')
 def learn(id):
-    lesson = lessons[str(id)]
-    return render_template('learn.html', id=id, lesson=lesson, data=qim)
+    lesson = lessons[str(id)]  # This line fetches the current lesson
+    return render_template('learn.html', id=id, lesson=lesson, lessons=lessons)  # Pass `lessons` to the template
 
 @app.route('/introduction_chart')
 def introduction_chart():
