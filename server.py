@@ -1,8 +1,7 @@
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request,session
 import json
-
 app = Flask(__name__)
-
+app.secret_key = 'your_secret_key'  # Replace with your own secret key
 # Load JSON data from qim.json
 with open('static/qim.json') as f:
     qim = json.load(f)
@@ -11,15 +10,7 @@ chart = qim['9']
 trade = qim['10']
 lessons = qim['lessons']
 quiz_results = []
-correct_answers = {
-    'question0': 'Triangle',
-    'question1': 'Head & Shoulders',
-    'question2': 'Cup & Handle',
-    'drop1': ['Head & Shoulders', 'Cup & Handle'],
-    'drop2': ['Descending Triangle', 'Reverse Pennant'],
-    'image6': 'buy',
-    'image7': 'sell'
-}
+question_map= qim['question_map']
 # ROUTES
 @app.route('/')
 def welcome():
@@ -45,35 +36,54 @@ def quiz(id):
     return render_template('quiz.html', id=id, data=qim)
 
 
-@app.route('/submit_quiz', methods=['POST'])
-def submit_quiz():
-    quiz_data = request.json
-
-    score = 0
-    for key in quiz_data:
-        user_answer = quiz_data[key]
-        correct_answer = correct_answers[key]
-        if isinstance(correct_answer, list):
-            if set(user_answer) == set(correct_answer):
-                score += 1
-        else:
-            if user_answer == correct_answer:
-                score += 1
-
-    quiz_data['score'] = score  # Add the 'score' key to the quiz_data dictionary
-    quiz_results.append(quiz_data)
-
-    return jsonify({'message': 'Quiz submitted successfully', 'score': score})
-
 @app.route('/learn/0')
 def the_basics():
     return render_template('the_basics.html')
 
+@app.route('/submit_quiz', methods=['POST'])
+def submit_quiz():
+    quiz_data = request.json
+    if 'user_answers' not in session:
+        session['user_answers'] = {}
+    # Store the user's answers in the session
+    session['user_answers'].update(quiz_data)
+    session.modified = True  # Notify Flask that the session has been modified
+    return jsonify({'message': 'Quiz submitted successfully'})
+
+
 @app.route('/quiz/score')
 def quiz_score():
-    score = quiz_results[-1]['score']  # Retrieve the score from the last submitted quiz
-    return render_template('score.html', score=score)
+    user_answers = session.get('user_answers')
+    print(user_answers)
+    correct_answers = {
+        # Define the correct answers for each question
+        'question1': 'Triangle',
+        'question2': 'Head & Shoulders',
+        'question3': 'Cup & Handle',
+        'drop1': ['Head & Shoulders', 'Cup & Handle'],
+        'drop2': ['Descending Triangle', 'Reverse Pennant'],
+        'image6': 'buy',
+        'image7': 'sell'
+    }
 
+    score = 0
+    incorrect_questions = []
+    for key in user_answers:
+        user_answer = user_answers[key]
+        correct_answer = correct_answers.get(key)
+        if correct_answer is not None:
+            if isinstance(correct_answer, list):
+                if set(user_answer) == set(correct_answer):
+                    score += 1
+                else:
+                    incorrect_questions.append(key)
+            else:
+                if user_answer == correct_answer:
+                    score += 1
+                else:
+                    incorrect_questions.append(key)
+
+    return render_template('score.html', score=score, incorrect_questions=incorrect_questions, question_map=question_map)
 if __name__ == '__main__':
     app.run(debug=True)
 
