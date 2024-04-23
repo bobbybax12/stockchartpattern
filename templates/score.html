@@ -3,8 +3,8 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <div class="content-header">Quiz Results</div>
+        <div class="col-md-12 text-center">
+            <h1 class="content-header">Quiz Results</h1>
         </div>
     </div>
     <div class="row justify-content-center">
@@ -12,7 +12,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title text-center">Your Score</h5>
-                    <p class="card-text text-center display-4">{{ score }}/10</p>
+                    <p class="card-text text-center display-4">{{ score }}/7</p>
                     {% if score >= 8 %}
                         <p class="text-center text-success">Congratulations! You have a strong understanding of the chart patterns.</p>
                     {% elif score >= 5 %}
@@ -20,15 +20,27 @@
                     {% else %}
                         <p class="text-center text-danger">Don't worry! You can improve your understanding of the chart patterns with more practice and study.</p>
                     {% endif %}
+                    {% if incorrect_questions %}
+                        <div class="mt-4">
+                            <p class="text-center">Questions answered incorrectly:</p>
+                            <ul class="list-group">
+                                {% for question in incorrect_questions %}
+                                    <li class="list-group-item text-center">
+                                        <a href="{{ url_for('learn', id=question_map[question]) }}">{{ question }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
     </div>
     <div class="row some-pad">
-        <div class="col-md-6 center">
+        <div class="col-md-6 text-center">
             <button class="btn btn-secondary" onclick="window.location.href='{{ url_for('welcome') }}'">Back to Home</button>
         </div>
-        <div class="col-md-6 center">
+        <div class="col-md-6 text-center">
             <button class="btn btn-success" onclick="window.location.href='{{ url_for('quiz', id=0) }}'">Retake Quiz</button>
         </div>
     </div>
