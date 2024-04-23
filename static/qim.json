@@ -132,6 +132,25 @@
                 "bearish_subtitle": "Trading Exhaustion Gaps",
                 "bearish_description": "Traders look to sell short when the price breaks below the gap."
             }
-        }
+        },
+    "correct_answers": {
+    "question1": "Triangle",
+    "question2": "Head & Shoulders",
+    "question3": "Cup & Handle",
+    "drop1": ["Head & Shoulders", "Cup & Handle"],
+    "drop2": ["Descending Triangle", "Reverse Pennant"],
+    "image6": "buy",
+    "image7": "sell"
+    },
+
+    "question_map" : {
+    "question1": 1,
+    "question2": 2,
+    "question3": 3,
+    "drop1": 1,
+    "drop2": 2,
+    "image6":3,
+    "image7": 3
+    }
         
 }
