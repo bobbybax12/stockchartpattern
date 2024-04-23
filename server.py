@@ -1,5 +1,6 @@
 from flask import Flask, render_template, jsonify, request,session
 import json
+from datetime import datetime
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Replace with your own secret key
 # Load JSON data from qim.json
@@ -11,33 +12,59 @@ trade = qim['10']
 lessons = qim['lessons']
 quiz_results = []
 question_map= qim['question_map']
+
+user_page_enter_times = {
+    'welcome' : [],
+    'introduction_chart' : [],
+    'introduction_trade' : [],
+    'quiz_1' : [],
+    'quiz_2' : [],
+    'quiz_3' : [],
+    'quiz_score' : [],
+    'the_basics' : []
+}
+for i in range(1, 11):
+    user_page_enter_times[f'learn_{i}'] = []
+
 # ROUTES
 @app.route('/')
 def welcome():
+    access_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    user_page_enter_times['welcome'].append(access_time)
     return render_template('welcome.html', data={})
 
 @app.route('/learn/<int:id>')
 def learn(id):
     lesson = lessons[str(id)]  # This line fetches the current lesson
+    access_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    user_page_enter_times[f'learn_{id}'].append(access_time)
     return render_template('learn.html', id=id, lesson=lesson, lessons=lessons)  # Pass `lessons` to the template
 
 @app.route('/introduction_chart')
 def introduction_chart():
     page = chart
+    access_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    user_page_enter_times['introduction_chart'].append(access_time)
     return render_template('introduction.html', page=page)
 
 @app.route('/introduction_trade')
 def introduction_trade():
     page = trade
+    access_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    user_page_enter_times['introduction_trade'].append(access_time)
     return render_template('introduction.html', page=page)
 
 @app.route('/quiz/<int:id>')
 def quiz(id):
+    access_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    user_page_enter_times[f'quiz_{id}'].append(access_time)
     return render_template('quiz.html', id=id, data=qim)
 
 
 @app.route('/learn/0')
 def the_basics():
+    acccess_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    user_page_enter_times['the_basics'].append(acccess_time)
     return render_template('the_basics.html')
 
 @app.route('/submit_quiz', methods=['POST'])
@@ -83,6 +110,8 @@ def quiz_score():
                 else:
                     incorrect_questions.append(key)
 
+    access_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    user_page_enter_times['quiz_score'].append(access_time)
     return render_template('score.html', score=score, incorrect_questions=incorrect_questions, question_map=question_map)
 if __name__ == '__main__':
     app.run(debug=True)
