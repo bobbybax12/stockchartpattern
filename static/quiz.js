@@ -62,8 +62,8 @@ function render1(data) {
     let im2_src = data["2"];
     let im3_src = data["3"];
     let dropdown_options = data["4"];
-    let dropdown = `
-                <select class="form-select" aria-label="Default select example">
+    let dropdown = (questionId) => `
+                <select class="form-select" aria-label="Default select example" data-question-id="${questionId}">
                     <option selected disabled value="">Select an option</option>
                     <option value="1">${dropdown_options[0]}</option>
                     <option value="2">${dropdown_options[1]}</option>
@@ -82,15 +82,15 @@ function render1(data) {
         <div class="row">
             <div class="col-md-4 center">
                 <img src="${im1_src}" class="img-fluid" alt="Image 1">
-                ${dropdown}
+                ${dropdown('question1')}
             </div>
             <div class="col-md-4 center">
                 <img src="${im2_src}" class="img-fluid" alt="Image 2">
-                ${dropdown}
+                ${dropdown('question2')}
             </div>
             <div class="col-md-4 center">
                 <img src="${im3_src}" class="img-fluid" alt="Image 3">
-                ${dropdown}
+                ${dropdown('question3')}
             </div>
         </div>
         <div class="row some-pad">
@@ -224,7 +224,6 @@ function render3(data) {
     `;
     $('#content').html(html);
 }
-
 function render4(data) {
     let score = data['8'];
     let html = `
@@ -257,7 +256,6 @@ function render4(data) {
     `;
     $('#content').html(html);
 }
-
 function goBack(id) {
     if (id == 0) {
         window.location.href = '/learn/12';
@@ -291,19 +289,12 @@ function goNext(id) {
     }
     else if (id == 3) {
         if (submitUserAnswer(id)) {
-        window.location.href = '/quiz/4';
+        window.location.href = '/quiz/score';
         }
     }
     else if (id == 4) {
-        submitUserAnswer(id)
+        window.location.href = '/';
     }
-}
-function submitUserAnswer(id) {
-    if (!validityCheck(id)) {
-        return false;
-    }
-    //ajas post request to submit user answer
-    return true;
 }
 
 function validityCheck(id) {
@@ -346,7 +337,7 @@ function validityCheck(id) {
             if ($('#add-after-here').next().next().next().length == 0) {
                 $('#add-after-here').after(errorMessage);
             }
-            
+
             isValid = false;
         }
         else {
@@ -358,7 +349,64 @@ function validityCheck(id) {
 }
     return isValid;
 }
+function submitUserAnswer(id) {
+    if (!validityCheck(id)) {
+        return false;
+    }
 
+    let answerData = {};
+
+    // Prepare answerData based on the quiz section
+    if (id === 1) {
+        // Get selected options from dropdowns
+        let selects = document.getElementsByClassName('form-select');
+        for (let i = 0; i < selects.length; i++) {
+            let questionId = selects[i].getAttribute('data-question-id');
+            let selectedOption = selects[i].options[selects[i].selectedIndex];
+            let answerText = selectedOption.textContent.trim();
+            answerData[questionId] = answerText;
+        }
+    } else if (id === 2) {
+        // Get dropped options in the drag-and-drop section
+        let drop1 = $('#drop1').children().map(function() {
+            return $(this).text().trim();
+        }).get();
+        let drop2 = $('#drop2').children().map(function() {
+            return $(this).text().trim();
+        }).get();
+        answerData['drop1'] = drop1;
+        answerData['drop2'] = drop2;
+    } else if (id === 3) {
+        // Get selected radio button values
+        answerData['image6'] = $('input[name="image6"]:checked').val();
+        answerData['image7'] = $('input[name="image7"]:checked').val();
+    }
+
+    // Disable the submit button
+    $('button[onclick="goNext(' + id + ')"]').prop('disabled', true);
+
+    // Make AJAX post request to submit user answer
+    $.ajax({
+        type: 'POST',
+        url: '/submit_quiz',
+        data: JSON.stringify(answerData),
+        contentType: 'application/json',
+        success: function(response) {
+            console.log('Answer submitted successfully:', response);
+            // Re-enable the submit button
+            $('button[onclick="goNext(' + id + ')"]').prop('disabled', false);
+            // Redirect to next quiz section
+            goNext(id);
+        },
+        error: function(xhr, status, error) {
+            console.error('Error submitting answer:', error);
+            // Re-enable the submit button
+            $('button[onclick="goNext(' + id + ')"]').prop('disabled', false);
+        }
+    });
+
+    return true;
+}
 $(document).ready(function() {
     renderpage(id, data);
 });

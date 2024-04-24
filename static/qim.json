@@ -9,28 +9,148 @@
     "8" : "85",
     "9" : {
         "1": "Essential Chart Patterns",
-        "2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.",
+        "2": "Welcome to the part where you will begin to learn about the most essential chart patterns for trading. Here, we'll explore the foundational patterns that can help you identify potential trading opportunities.",
         "3": "https://www.bankrate.com/2019/03/22142110/How-to-trade-stocks.jpg",
         "4": 1
     },
     "10" : {
         "1": "How to Trade These Patterns",
-        "2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.",
+        "2": "Welcome to the part where you will learn how to trade the most essential chart patterns. Here, we'll explore how to apply the knowledge of chart patterns to identify potential trading opportunities and make informed decisions.",
         "3": "https://www.bankrate.com/2019/03/22142110/How-to-trade-stocks.jpg",
         "4": 7
     },
     "lessons" :{
-        "1": {"title": "Cup and Handle Pattern", "description": "Learn the basics of trading.", "image": "https://content.stockstotrade.com/cdn-cgi/image/quality=100,format=webp,width=870/https://content.stockstotrade.com/wp-content/uploads/2022/02/Cup-and-Handle.jpg"},
-        "2": {"title": "The Pennant Pattern", "description": "Understand how to analyze market trends.", "image": "https://content.stockstotrade.com/cdn-cgi/image/quality=100,format=webp,width=870/https://content.stockstotrade.com/wp-content/uploads/2022/02/Pennant.jpg"},
-        "3": {"title": "Head and Shoulders Pattern", "description": "Explore the fundamentals of technical analysis.", "image": "https://content.stockstotrade.com/cdn-cgi/image/quality=100,format=webp,width=870/https://content.stockstotrade.com/wp-content/uploads/2022/02/Head-and-Shoulders.jpg"},
-        "4": {"title": "Triangle Pattern", "description": "Learn about risk management techniques.", "image": "https://content.stockstotrade.com/cdn-cgi/image/quality=100,format=webp,width=706/https://content.stockstotrade.com/wp-content/uploads/2022/02/Triangle.jpg"},
-        "5": {"title": "Flag Pattern", "description": "Create a personalized trading plan.", "image": "https://content.stockstotrade.com/cdn-cgi/image/quality=100,format=webp,width=870/https://content.stockstotrade.com/wp-content/uploads/2022/02/Flag.jpg"},
-        "6": {"title": "Gaps", "description": "Create a personalized trading plan.", "image": "https://content.stockstotrade.com/cdn-cgi/image/quality=100,format=webp,width=574/https://content.stockstotrade.com/wp-content/uploads/2022/02/Gaps.jpg"},
-        "7": {"title": "Cup and Handle Pattern", "description": "Learn the basics of trading.", "image": "https://content.stockstotrade.com/cdn-cgi/image/quality=100,format=webp,width=870/https://content.stockstotrade.com/wp-content/uploads/2022/02/Cup-and-Handle.jpg"},
-        "8": {"title": "The Pennant Pattern", "description": "Understand how to analyze market trends.", "image": "https://content.stockstotrade.com/cdn-cgi/image/quality=100,format=webp,width=870/https://content.stockstotrade.com/wp-content/uploads/2022/02/Pennant.jpg"},
-        "9": {"title": "Head and Shoulders Pattern", "description": "Explore the fundamentals of technical analysis.", "image": "https://content.stockstotrade.com/cdn-cgi/image/quality=100,format=webp,width=870/https://content.stockstotrade.com/wp-content/uploads/2022/02/Head-and-Shoulders.jpg"},
-        "10": {"title": "Triangle Pattern", "description": "Learn about risk management techniques.", "image": "https://content.stockstotrade.com/cdn-cgi/image/quality=100,format=webp,width=706/https://content.stockstotrade.com/wp-content/uploads/2022/02/Triangle.jpg"},
-        "11": {"title": "Flag Pattern", "description": "Create a personalized trading plan.", "image": "https://content.stockstotrade.com/cdn-cgi/image/quality=100,format=webp,width=870/https://content.stockstotrade.com/wp-content/uploads/2022/02/Flag.jpg"},
-        "12": {"title": "Gaps", "description": "Create a personalized trading plan.", "image": "https://content.stockstotrade.com/cdn-cgi/image/quality=100,format=webp,width=574/https://content.stockstotrade.com/wp-content/uploads/2022/02/Gaps.jpg"}
+        "1": {
+            "title": "Cup and Handle Pattern",
+            "description": "The cup and handle pattern is a bullish continuation pattern that forms after a sustained upward trend.",
+            "image": "https://content.stockstotrade.com/cdn-cgi/image/quality=100,format=webp,width=870/https://content.stockstotrade.com/wp-content/uploads/2022/02/Cup-and-Handle.jpg",        
+            "bullish_subtitle": "Bullish Cup and Handle",
+            "bullish_description": "The cup and handle pattern consists of two parts: the cup and the handle.",
+        "bullish_additional_info": "The cup resembles a rounding bottom and is formed after a significant uptrend. It represents a temporary consolidation or correction in the price. The handle is a smaller consolidation pattern that forms after the cup, usually in the form of a small downward movement in price. Once the handle is formed, the price typically breaks out to the upside, signaling a continuation of the previous uptrend."
+        },
+        "2": {
+            "title": "The Pennant Pattern",
+            "description": "The pennant pattern is a continuation pattern that indicates a brief consolidation in a trend before the previous trend resumes.",
+            "image": "https://content.stockstotrade.com/cdn-cgi/image/quality=100,format=webp,width=870/https://content.stockstotrade.com/wp-content/uploads/2022/02/Pennant.jpg",        
+            "bullish_subtitle": "Bullish Pennant",
+            "bullish_description": "The bullish pennant is characterized by a small symmetrical triangle, which represents a brief consolidation before a continuation of an uptrend.",
+            "bullish_additional_info": "The bullish pennant is a continuation pattern that forms after a strong price movement and indicates a temporary pause or consolidation before the previous uptrend resumes.",
+            "bearish_subtitle": "Bearish Pennant",
+            "bearish_description": "The bearish pennant is characterized by a small symmetrical triangle, which represents a brief consolidation before a continuation of a downtrend.",
+            "bearish_additional_info": "The bearish pennant is a continuation pattern that forms after a strong price movement and indicates a temporary pause or consolidation before the previous downtrend resumes."
+        },
+        "3": {
+            "title": "Head and Shoulders Pattern",
+            "description": "The head and shoulders pattern is a reversal pattern that indicates the end of an uptrend and the beginning of a downtrend.",
+            "image": "https://content.stockstotrade.com/cdn-cgi/image/quality=100,format=webp,width=870/https://content.stockstotrade.com/wp-content/uploads/2022/02/Head-and-Shoulders.jpg",        
+            "bullish_subtitle": "Inverse Head and Shoulders",
+            "bullish_description": "The inverse head and shoulders pattern is a bullish reversal pattern that indicates the end of a downtrend and the beginning of an uptrend.",
+            "bullish_additional_info": "The inverse head and shoulders pattern is formed after a downtrend and indicates a potential reversal to an uptrend. It consists of three troughs, with the middle trough (head) lower than the others.",
+            "bearish_subtitle": "Head and Shoulders",
+            "bearish_description": "The head and shoulders pattern is a bearish reversal pattern that indicates the end of an uptrend and the beginning of a downtrend.",
+            "bearish_additional_info": "The head and shoulders pattern is formed after an uptrend and indicates a potential reversal to a downtrend. It consists of three peaks, with the middle peak (head) higher than the others."
+        },
+        "4": {
+            "title": "Triangle Pattern",
+            "description": "The triangle pattern is a continuation pattern that indicates a temporary consolidation in a trend before the previous trend resumes.",
+            "image": "https://content.stockstotrade.com/cdn-cgi/image/quality=100,format=webp,width=706/https://content.stockstotrade.com/wp-content/uploads/2022/02/Triangle.jpg",        
+            "bullish_subtitle": "Bullish Triangle",
+            "bullish_description": "The bullish triangle is characterized by an ascending triangle or a symmetrical triangle, indicating a potential continuation of an uptrend.",
+            "bullish_additional_info": "The bullish triangle is a continuation pattern that forms after an uptrend and indicates a potential continuation of the uptrend. It is formed by two converging trendlines, with one acting as support and the other as resistance.",
+            "bearish_subtitle": "Bearish Triangle",
+            "bearish_description": "The bearish triangle is characterized by a descending triangle or a symmetrical triangle, indicating a potential continuation of a downtrend.",
+            "bearish_additional_info": "The bearish triangle is a continuation pattern that forms after a downtrend and indicates a potential continuation of the downtrend. It is formed by two converging trendlines, with one acting as resistance and the other as support."
+        },
+        "5": {
+            "title": "Flag Pattern",
+            "description": "The flag pattern is a continuation pattern that indicates a brief consolidation in a trend before the previous trend resumes.",
+            "image": "https://content.stockstotrade.com/cdn-cgi/image/quality=100,format=webp,width=870/https://content.stockstotrade.com/wp-content/uploads/2022/02/Flag.jpg",        
+            "bullish_subtitle": "Bullish Flag",
+            "bullish_description": "The bullish flag is characterized by a small rectangle, representing a brief consolidation before a continuation of an uptrend.",
+            "bullish_additional_info": "The bullish flag is a continuation pattern that forms after a strong upward price movement and indicates a brief consolidation or pause before the previous uptrend resumes.",
+            "bearish_subtitle": "Bearish Flag",
+            "bearish_description": "The bearish flag is characterized by a small rectangle, representing a brief consolidation before a continuation of a downtrend.",
+            "bearish_additional_info": "The bearish flag is a continuation pattern that forms after a strong downward price movement and indicates a brief consolidation or pause before the previous downtrend resumes."
+        },
+        "6": {
+            "title": "Gaps",
+            "description": "Gaps occur when the price of an asset moves sharply up or down with little to no trading in between.",
+            "image": "https://content.stockstotrade.com/cdn-cgi/image/quality=100,format=webp,width=574/https://content.stockstotrade.com/wp-content/uploads/2022/02/Gaps.jpg",        
+            "bullish_subtitle": "Breakaway Gap",
+            "bullish_description": "The breakaway gap occurs when the price breaks out of a trading range, indicating the beginning of a new trend.",
+            "bullish_additional_info": "The breakaway gap is a bullish continuation pattern that occurs when the price breaks out of a trading range, indicating the beginning of a new trend. It often occurs after a period of consolidation and signals a strong buying interest.",
+            "bearish_subtitle": "Exhaustion Gap",
+            "bearish_description": "The exhaustion gap occurs near the end of a trend and indicates a final attempt to continue the trend before a reversal.",
+            "bearish_additional_info": "The exhaustion gap is a bearish continuation pattern that occurs near the end of a trend and indicates a final attempt to continue the trend before a reversal. It often occurs after a prolonged trend and signals a lack of buying interest."
+        },
+        
+            "7": {
+                "title": "Cup and Handle Pattern",
+                "image": "https://content.stockstotrade.com/cdn-cgi/image/quality=100,format=webp,width=870/https://content.stockstotrade.com/wp-content/uploads/2022/02/Cup-and-Handle.jpg",        
+                "bullish_subtitle": "Trading the Bullish Cup and Handle",
+                "bullish_description": "Traders look to buy when the price breaks above the handle's resistance.",
+                "bearish_subtitle": "Trading the Bearish Cup and Handle",
+                "bearish_description": "Traders look to sell short when the price breaks below the handle's support."
+            },
+            "8": {
+                "title": "The Pennant Pattern",
+                "image": "https://content.stockstotrade.com/cdn-cgi/image/quality=100,format=webp,width=870/https://content.stockstotrade.com/wp-content/uploads/2022/02/Pennant.jpg",        
+                "bullish_subtitle": "Trading the Bullish Pennant",
+                "bullish_description": "Traders look to buy when the price breaks above the upper trendline of the pennant.",
+                "bearish_subtitle": "Trading the Bearish Pennant",
+                "bearish_description": "Traders look to sell short when the price breaks below the lower trendline of the pennant."
+            },
+            "9": {
+                "title": "Head and Shoulders Pattern",
+                "image": "https://content.stockstotrade.com/cdn-cgi/image/quality=100,format=webp,width=870/https://content.stockstotrade.com/wp-content/uploads/2022/02/Head-and-Shoulders.jpg",        
+                "bullish_subtitle": "Trading the Inverse Head and Shoulders",
+                "bullish_description": "Traders look to buy when the price breaks above the neckline.",
+                "bearish_subtitle": "Trading the Head and Shoulders",
+                "bearish_description": "Traders look to sell short when the price breaks below the neckline."
+            },
+            "10": {
+                "title": "Triangle Pattern",
+                "image": "https://content.stockstotrade.com/cdn-cgi/image/quality=100,format=webp,width=706/https://content.stockstotrade.com/wp-content/uploads/2022/02/Triangle.jpg",        
+                "bullish_subtitle": "Trading Bullish Triangles",
+                "bullish_description": "Traders look to buy when the price breaks above the upper trendline of the triangle.",
+                "bearish_subtitle": "Trading Bearish Triangles",
+                "bearish_description": "Traders look to sell short when the price breaks below the lower trendline of the triangle."
+            },
+            "11": {
+                "title": "Flag Pattern",
+                "image": "https://content.stockstotrade.com/cdn-cgi/image/quality=100,format=webp,width=870/https://content.stockstotrade.com/wp-content/uploads/2022/02/Flag.jpg",        
+                "bullish_subtitle": "Trading Bullish Flags",
+                "bullish_description": "Traders look to buy when the price breaks above the upper trendline of the flag.",
+                "bearish_subtitle": "Trading Bearish Flags",
+                "bearish_description": "Traders look to sell short when the price breaks below the lower trendline of the flag."
+            },
+            "12": {
+                "title": "Gaps",
+                "image": "https://content.stockstotrade.com/cdn-cgi/image/quality=100,format=webp,width=574/https://content.stockstotrade.com/wp-content/uploads/2022/02/Gaps.jpg",        
+                "bullish_subtitle": "Trading Breakaway Gaps",
+                "bullish_description": "Traders look to buy when the price breaks above the gap.",
+                "bearish_subtitle": "Trading Exhaustion Gaps",
+                "bearish_description": "Traders look to sell short when the price breaks below the gap."
+            }
+        },
+    "correct_answers": {
+    "question1": "Triangle",
+    "question2": "Head & Shoulders",
+    "question3": "Cup & Handle",
+    "drop1": ["Head & Shoulders", "Cup & Handle"],
+    "drop2": ["Descending Triangle", "Reverse Pennant"],
+    "image6": "buy",
+    "image7": "sell"
+    },
+
+    "question_map" : {
+    "question1": 1,
+    "question2": 2,
+    "question3": 3,
+    "drop1": 1,
+    "drop2": 2,
+    "image6":3,
+    "image7": 3
     }
+        
 }
