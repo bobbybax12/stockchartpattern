@@ -12,18 +12,20 @@ trade = qim['10']
 lessons = qim['lessons']
 quiz_results = []
 question_map= qim['question_map']
+correct_answers = qim['correct_answers']
 
 user_page_enter_times = {
     'welcome' : [],
     'introduction_chart' : [],
     'introduction_trade' : [],
+    'quiz_0' : [],
     'quiz_1' : [],
     'quiz_2' : [],
     'quiz_3' : [],
     'quiz_score' : [],
     'the_basics' : []
 }
-for i in range(1, 11):
+for i in range(1, 13):
     user_page_enter_times[f'learn_{i}'] = []
 
 # ROUTES
@@ -81,18 +83,7 @@ def submit_quiz():
 @app.route('/quiz/score')
 def quiz_score():
     user_answers = session.get('user_answers')
-    print(user_answers)
-    correct_answers = {
-        # Define the correct answers for each question
-        'question1': 'Triangle',
-        'question2': 'Head & Shoulders',
-        'question3': 'Cup & Handle',
-        'drop1': ['Head & Shoulders', 'Cup & Handle'],
-        'drop2': ['Descending Triangle', 'Reverse Pennant'],
-        'image6': 'buy',
-        'image7': 'sell'
-    }
-
+    global correct_answers
     score = 0
     incorrect_questions = []
     for key in user_answers:

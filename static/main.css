@@ -20,3 +20,19 @@ body{
     color : rgb(96, 228, 13);
     font-size : 20px;
 }
+.lead {
+    padding-bottom: 12px;
+    font-size: 28px;
+}
+.quiz-pad{
+    padding-top: 16px;
+}
+
+.bot-pad{
+    padding-bottom: 36px;
+    padding-left: 36px;
+    padding-right: 36px;
+}
+.top-pad{
+    padding-bottom: 20px;
+}
