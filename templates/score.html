@@ -1,5 +1,9 @@
 {% extends "layout.html" %}
-
+<style>
+    .content-header {
+        font-family: 'Times New Roman', serif;
+    }
+</style>
 {% block content %}
 <div class="container">
     <div class="row">
@@ -13,7 +17,7 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">Your Score</h5>
                     <p class="card-text text-center display-4">{{ score }}/7</p>
-                    {% if score >= 8 %}
+                    {% if score >= 6 %}
                         <p class="text-center text-success">Congratulations! You have a strong understanding of the chart patterns.</p>
                     {% elif score >= 5 %}
                         <p class="text-center text-warning">Good job! You have a fair understanding of the chart patterns. Keep practicing to improve your skills.</p>
@@ -23,20 +27,23 @@
                     {% if incorrect_questions %}
                         <div class="mt-4">
                             <p class="text-center">Questions answered incorrectly:</p>
-                            <ul class="list-group">
-                                {% for question in incorrect_questions %}
-                                    <li class="list-group-item text-center">
-                                        <a href="{{ url_for('learn', id=question_map[question]) }}">{{ question }}</a>
-                                    </li>
+                            <div class="row">
+                                {% for question, correct_answer, image_url, question_url in incorrect_questions %}
+                                    <div class="col-md-4 text-center">
+                                        <a href="{{ question_url }}">
+                                            <img src="{{ image_url }}" alt="{{ question }}" class="img-fluid">
+                                        </a>
+                                        <p>Correct Answer: {{ correct_answer }}</p>
+                                    </div>
                                 {% endfor %}
-                            </ul>
+                            </div>
                         </div>
                     {% endif %}
                 </div>
             </div>
         </div>
     </div>
-    <div class="row some-pad">
+    <div class="row mt-5">
         <div class="col-md-6 text-center">
             <button class="btn btn-secondary" onclick="window.location.href='{{ url_for('welcome') }}'">Back to Home</button>
         </div>

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, request,session
+from flask import Flask, render_template, jsonify, request,session,url_for
 import json
 from datetime import datetime
 app = Flask(__name__)
@@ -83,7 +83,16 @@ def submit_quiz():
 @app.route('/quiz/score')
 def quiz_score():
     user_answers = session.get('user_answers')
-    global correct_answers
+    correct_answers = {
+        # Define the correct answers for each question
+        'question1': 'Triangle',
+        'question2': 'Head & Shoulders',
+        'question3': 'Cup & Handle',
+        'drop1': ['Head & Shoulders', 'Cup & Handle'],
+        'drop2': ['Descending Triangle', 'Reverse Pennant'],
+        'image6': 'buy',
+        'image7': 'sell'
+    }
     score = 0
     incorrect_questions = []
     for key in user_answers:
@@ -94,16 +103,43 @@ def quiz_score():
                 if set(user_answer) == set(correct_answer):
                     score += 1
                 else:
-                    incorrect_questions.append(key)
+                    incorrect_questions.append((key, correct_answer, get_image_url(key), get_question_url(key)))
             else:
                 if user_answer == correct_answer:
                     score += 1
                 else:
-                    incorrect_questions.append(key)
+                    incorrect_questions.append((key, correct_answer, get_image_url(key), get_question_url(key)))
 
     access_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     user_page_enter_times['quiz_score'].append(access_time)
-    return render_template('score.html', score=score, incorrect_questions=incorrect_questions, question_map=question_map)
+    return render_template('score.html', score=score, incorrect_questions=incorrect_questions)
+
+def get_image_url(question_key):
+    # Define a mapping of question keys to image URLs
+    image_urls = {
+        'question1': 'https://i.ibb.co/cc3BmpY/p1.png',
+        'question2': 'https://i.ibb.co/zssdf5T/p2.png',
+        'question3': 'https://i.ibb.co/3mKtYFw/p3.png',
+        'drop1': 'https://i.ibb.co/x3Z2ZzM/WX20240423-222011-2x.png',
+        'drop2': 'https://i.ibb.co/Qk6RcQs/WX20240423-222027-2x.png',
+        'image6': 'https://i.ibb.co/Mkpg6Dr/Screenshot-2024-04-16-at-4-39-05-PM.png',
+        'image7': 'https://i.ibb.co/9npczgc/Screenshot-2024-04-16-at-4-39-11-PM.png'
+    }
+    return image_urls.get(question_key, '')
+
+def get_question_url(question_key):
+    # Define a mapping of question keys to question page URLs
+    question_urls = {
+        'question1': url_for('quiz', id=1),
+        'question2': url_for('quiz', id=1),
+        'question3': url_for('quiz', id=1),
+        'drop1': url_for('quiz', id=2),
+        'drop2': url_for('quiz', id=2),
+        'image6': url_for('quiz', id=3),
+        'image7': url_for('quiz', id=3)
+    }
+    return question_urls.get(question_key, '')
+
 if __name__ == '__main__':
     app.run(debug=True)
 
