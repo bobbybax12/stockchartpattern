@@ -134,13 +134,13 @@
             }
         },
     "correct_answers": {
-    "question1": "Triangle",
+    "question1": "The Pennant",
     "question2": "Head & Shoulders",
     "question3": "Cup & Handle",
-    "drop1": ["Head & Shoulders", "Cup & Handle"],
-    "drop2": ["Descending Triangle", "Reverse Pennant"],
-    "image6": "buy",
-    "image7": "sell"
+    "drop1": ["Cup & Handle"],
+    "drop2": ["Head & Shoulders", "Descending Triangle", "Reverse Pennant"],
+    "image6": "sell",
+    "image7": "buy"
     },
 
     "question_map" : {
