@@ -16,9 +16,10 @@
             <p>{{ lesson['bullish_description'] }}</p>
             <!-- Learn More Button for Bullish -->
             {% if lesson['bullish_additional_info'] %}
-            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#bullishCollapse" aria-expanded="false" aria-controls="bullishCollapse">
+            <button class="btn btn-link btn-success text-white" type="button" data-toggle="collapse" data-target="#bullishCollapse" aria-expanded="false" aria-controls="bullishCollapse">
                 Learn More
             </button>
+        
             <div class="collapse" id="bullishCollapse">
                 <div class="card card-body">
                     <!-- Additional content for Bullish -->
@@ -34,9 +35,9 @@
             <p>{{ lesson['bearish_description'] }}</p>
             <!-- Learn More Button for Bearish -->
             {% if lesson['bearish_additional_info'] %}
-            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#bearishCollapse" aria-expanded="false" aria-controls="bearishCollapse">
+            <button class="btn btn-link btn-danger text-white" type="button" data-toggle="collapse" data-target="#bearishCollapse" aria-expanded="false" aria-controls="bearishCollapse">
                 Learn More
-            </button>
+            </button>            
             <div class="collapse" id="bearishCollapse">
                 <div class="card card-body">
                     <!-- Additional content for Bearish -->
