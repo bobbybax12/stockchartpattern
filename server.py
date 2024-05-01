@@ -95,12 +95,12 @@ def quiz_score():
                     score += 1
                 else:
                     correct_answer = ', '.join(correct_answer)
-                    incorrect_questions.append((key, correct_answer, get_image_url(key), get_question_url(key)))
+                    incorrect_questions.append((key, correct_answer, get_image_url(key), get_question_url(key), user_answer))
             else:
                 if user_answer == correct_answer:
                     score += 1
                 else:
-                    incorrect_questions.append((key, correct_answer, get_image_url(key), get_question_url(key)))
+                    incorrect_questions.append((key, correct_answer, get_image_url(key), get_question_url(key), user_answer))
 
     access_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     user_page_enter_times['quiz_score'].append(access_time)

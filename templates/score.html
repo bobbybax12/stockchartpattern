@@ -28,11 +28,12 @@
                         <div class="mt-4">
                             <p class="text-center">Questions answered incorrectly:</p>
                             <div class="row">
-                                {% for question, correct_answer, image_url, question_url in incorrect_questions %}
+                                {% for question, correct_answer, image_url, question_url, user_answer in incorrect_questions %}
                                     <div class="col-md-4 text-center">
                                         <a href="{{ question_url }}">
                                             <img src="{{ image_url }}" alt="{{ question }}" class="img-fluid">
                                         </a>
+                                        <p>Your Answer: {{ user_answer }}</p>
                                         <p>Correct Answer: {{ correct_answer }}</p>
                                     </div>
                                 {% endfor %}
