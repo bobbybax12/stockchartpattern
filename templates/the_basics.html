@@ -1,15 +1,23 @@
 {% extends "layout.html" %}
 
 {% block content %}
+<style>
+    /* CSS to make terms bigger */
+    .term {
+        font-size: 20px; /* Adjust the font size as needed */
+    }
+</style>
+
 <script>
     $( function() {
-      $( document ).tooltip();
+        $( document ).tooltip();
     } );
-    </script>
+</script>
+
 <div class="container mt-5">
     <h1 class="text-center">The Basics</h1>
     <div class="mt-4">
-        <p class="text-center">(Hover over terms for definitions)</p>
+        <p class="text-center">(Hover over each term for their definition)</p>
         <div class="d-flex flex-wrap justify-content-center">
             <span class="term badge badge-secondary mx-2" data-toggle="tooltip" title="A piece of a company that people can buy, own, or sell.">Stock</span>
             <span class="term badge badge-secondary mx-2" data-toggle="tooltip" title="The act of purchasing shares in a company.">Buy</span>
