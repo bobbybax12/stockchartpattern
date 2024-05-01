@@ -151,6 +151,16 @@
     "drop2": 2,
     "image6":3,
     "image7": 3
+    },
+
+    "image_urls" : {
+        "question1": "https://i.ibb.co/cc3BmpY/p1.png",
+        "question2": "https://i.ibb.co/zssdf5T/p2.png",
+        "question3": "https://i.ibb.co/3mKtYFw/p3.png",
+        "drop1": "https://i.ibb.co/x3Z2ZzM/WX20240423-222011-2x.png",
+        "drop2": "https://i.ibb.co/Qk6RcQs/WX20240423-222027-2x.png",
+        "image6": "https://i.ibb.co/Mkpg6Dr/Screenshot-2024-04-16-at-4-39-05-PM.png",
+        "image7": "https://i.ibb.co/9npczgc/Screenshot-2024-04-16-at-4-39-11-PM.png"
     }
-        
+
 }
