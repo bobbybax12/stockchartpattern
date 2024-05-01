@@ -69,12 +69,12 @@
                 {% elif id > 1 %}
                     {% set next_url = url_for('learn', id=id-1) %}
                 {% endif %}
-                <button class="btn btn-outline-secondary" onclick="window.location.href='{{ next_url }}'" aria-label="Previous">
+                <button class="btn btn-secondary" onclick="window.location.href='{{ next_url }}'" aria-label="Previous">
                     <span aria-hidden="true">&laquo; Previous</span>
                 </button>
             </li>
             <li>
-                <button class="btn btn-outline-success" onclick="window.location.href='{% if id == 6 %}{{ url_for('introduction_trade') }}{% elif id == 12 %}{{ url_for('quiz', id=0) }}{% else %}{{ url_for('learn', id=id+1) }}{% endif %}'" aria-label="Next">
+                <button class="btn btn-success" onclick="window.location.href='{% if id == 6 %}{{ url_for('introduction_trade') }}{% elif id == 12 %}{{ url_for('quiz', id=0) }}{% else %}{{ url_for('learn', id=id+1) }}{% endif %}'" aria-label="Next">
                     <span aria-hidden="true">{% if id == 12 %}Take Quiz{% else %}Next{% endif %} &raquo;</span>
                 </button>
             </li>
