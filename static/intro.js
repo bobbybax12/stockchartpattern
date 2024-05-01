@@ -5,7 +5,7 @@ function hmmmm(page) {
     // select the p element
     $("p").text(page[2]);
     // select hmmmm div and add image from page[3]
-    let image = `<img src="${page[3]}" style="width: 500px; height: auto;">`
+    let image = `<img src="${page[3]}" style="width: 500px; height: 300px;">`
     $("#hm").append(image);
 }
 

@@ -60,3 +60,7 @@
 #add-after-here {
     height: 66px;
 }
+.img-size {
+    height: 240px;
+    width: 240px;
+}

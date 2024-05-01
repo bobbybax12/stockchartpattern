@@ -3,7 +3,6 @@
 {% block content %}
 <script>
     let page = {{ page | tojson }};
-    console.log(page);
 </script>
 <script src="{{ url_for('static', filename='intro.js') }}"></script>
 <div class="container text-center mt-5">

@@ -39,9 +39,53 @@ body{
 }
 
 img{
+    border-radius: 10px;
     border: 5px solid black;
+}
+img.no-border{
+    border: none;
 }
 
 button{
     margin-top: 10px;
+}
+.max-h {
+    max-height: 300px;
+    width: 500px;
+}
+.page-nav-pad{
+    padding-top: 133px;
+}
+
+.toggleButton {
+    font-size: 20px; /* Adjust the font size as needed */
+}
+
+.xpad {
+    margin-left:16px;
+    margin-right: 16px;
+    margin-top: 60px;
+}
+
+.def-box {
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: white;
+    margin: 100px;
+    margin-bottom: 50px;
+    text-align: center;
+    justify-content: center;
+    padding-top: 24px;
+    font-size: 20px;
+    padding-bottom: 24px;
+}
+.basic-nav-pad {
+    padding-top: 200px!important;
+}
+
+.new-pad {
+    padding-top: 72px;
+}
+.trade-pad {
+    padding-top: 60px;
 }

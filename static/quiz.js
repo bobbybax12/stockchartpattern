@@ -81,15 +81,15 @@ function render1(data) {
         </div>
         <div class="row">
             <div class="col-md-4 center">
-                <img src="${im1_src}" class="img-fluid" alt="Image 1">
+                <img src="${im1_src}" class="img-fluid no-border" alt="Image 1">
                 ${dropdown('question1')}
             </div>
             <div class="col-md-4 center">
-                <img src="${im2_src}" class="img-fluid" alt="Image 2">
+                <img src="${im2_src}" class="img-fluid no-border" alt="Image 2">
                 ${dropdown('question2')}
             </div>
             <div class="col-md-4 center">
-                <img src="${im3_src}" class="img-fluid" alt="Image 3">
+                <img src="${im3_src}" class="img-fluid no-border" alt="Image 3">
                 ${dropdown('question3')}
             </div>
         </div>
@@ -99,7 +99,7 @@ function render1(data) {
             </div>
             <div class="col-md-4"></div>
             <div class="col-md-4 center">
-                <button class="btn btn-success" onclick="goNext(1)"> Submit </button>
+                <button class="btn btn-success" onclick="goNext(1)"> Next </button>
             </div>
     </div>
     `;
@@ -145,22 +145,33 @@ function render2(data) {
             </div>
             <div class="col-md-4"></div>
             <div class="col-md-4 center">
-                <button class="btn btn-success" onclick="goNext(2)"> Submit </button>
+                <button class="btn btn-success" onclick="goNext(2)"> Next </button>
             </div>
         </div>
     `;
     $('#content').html(html);
 
     $( ".draggable" ).draggable({
-        revert: 'invalid'
+        revert: 'invalid',
+        start: function() {
+            $(this).css({
+                zIndex: 1000
+            });
+        },
+        stop: function() {
+            $(this).css({
+                zIndex: 'auto'
+            });
+        }
     });
     $( ".dropable" ).droppable({
         accept: '.draggable',
         drop: function(event, ui) {
+            let orgwidth = ui.draggable.width();
             $(this).append(ui.draggable.css({
-                position: 'relative',
                 left: '0px',
-                top: '0px'
+                top: '0px',
+                backgroundColor: 'white',
             }));
         }
     });
@@ -189,14 +200,14 @@ function render3(data) {
                         </div>
                     </div>
                     <div class="col-md-6 center">
-                        <img src="${im6_src}" class="img-fluid" alt="Image 6">
+                        <img src="${im6_src}" class="img-size" alt="Image 6">
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-6 center">
-                        <img src="${im7_src}" class="img-fluid" alt="Image 7">
+                        <img src="${im7_src}" class="img-size" alt="Image 7">
                     </div>
                     <div class="col-md-6 center">
                         <div class="form-check">
@@ -217,7 +228,7 @@ function render3(data) {
             </div>
             <div class="col-md-4"></div>
             <div class="col-md-4 center">
-                <button class="btn btn-success" onclick="goNext(3)"> Submit </button>
+                <button class="btn btn-success" onclick="goNext(3)"> Finish </button>
             </div>
         </div>
     </div>
@@ -407,6 +418,26 @@ function submitUserAnswer(id) {
 
     return true;
 }
+
+function getUserAnswers(id) {
+    // Make AJAX get request to get user answers for various id
+    $.ajax({
+        type: 'GET',
+        url: '/get_quiz_answers',
+        data: {id: id},
+        success: function(response) {
+            console.log('User answers retrieved successfully:', response);
+            // Render the page with user answers
+            renderpage(id, response);
+        },
+        error: function(xhr, status, error) {
+            console.error('Error getting user answers:', error);
+        }
+    });
+        
+}
+
+
 $(document).ready(function() {
     renderpage(id, data);
 });

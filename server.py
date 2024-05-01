@@ -140,6 +140,17 @@ def get_question_url(question_key):
     }
     return question_urls.get(question_key, '')
 
+@app.route('/get_quiz_answers', methods=['GET'])
+def get_quiz_answers():
+    id = request.args.get('id', type=int)
+    # Fetch the user answers based on the id from your database
+    # This is just a placeholder, replace it with your actual database query
+    user_answers = session.get('user_answers')
+    if user_answers is not None:
+        return jsonify(user_answers)
+    else:
+        return jsonify({'error': 'User answers not found'}), 404
+
 if __name__ == '__main__':
     app.run(debug=True)
 
