@@ -22,7 +22,7 @@ body{
     font-size : 20px;
 }
 .lead {
-    padding-bottom: 12px;
+    padding-bottom: 36px;
     font-size: 28px;
 }
 .quiz-pad{
@@ -58,11 +58,11 @@ button{
     width: 500px;
 }
 .page-nav-pad{
-    padding-top: 133px;
+    padding-top: 157px; /* Adjust the padding as font changes */
 }
 
 .toggleButton {
-    font-size: 18px; /* Adjust the font size as needed */
+    font-size: 18px; 
 }
 
 .xpad {
