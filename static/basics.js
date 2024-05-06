@@ -37,7 +37,7 @@ $(document).ready(function() {
         'share' : 'A single unit of ownership in a company or financial asset.',
         'trade' : 'The act of buying or selling in the stock market.'
     };
-    $('.main-cont').append('<div class="def-box" style="color: red;">Feel free to explore the definitions of the terms above.</div>');
+    $('.main-cont').append('<div class="def-box">Feel free to explore the definitions of the terms above.</div>');
     $('#xstock, #xbuy, #xsell, #xlong-term, #xshort-term, #xshare, #xtrade').addClass('xpad');
     var maxWidth = 0;
 

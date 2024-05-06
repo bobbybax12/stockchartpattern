@@ -15,7 +15,7 @@ function navHighlight() {
         if (num < 1) {
             target = $('#n-basics');
         }
-        else if (num < 6) {
+        else if (num <= 6) {
             target = $('#n-patterns');
         }
         else {
