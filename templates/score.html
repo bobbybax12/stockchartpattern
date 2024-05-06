@@ -1,18 +1,8 @@
 {% extends "layout.html" %}
-<style>
-    .content-header {
-        font-family: 'Times New Roman', serif;
-    }
-</style>
 {% block content %}
 <div class="container">
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <h1 class="content-header">Quiz Results</h1>
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-md-6">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title text-center">Your Score</h5>
@@ -27,24 +17,35 @@
                     {% if incorrect_questions %}
                         <div class="mt-4">
                             <p class="text-center">Questions answered incorrectly:</p>
-                            <div class="row">
-                                {% for question, correct_answer, image_url, question_url, user_answer in incorrect_questions %}
-                                    <div class="col-md-4 text-center">
-                                        <a href="{{ question_url }}">
-                                            <img src="{{ image_url }}" alt="{{ question }}" class="img-fluid score-img">
-                                        </a>
-                                        <p>Your Answer: {{ user_answer }}</p>
-                                        <p>Correct Answer: {{ correct_answer }}</p>
+                            {% for question, correct_answer, image_url, question_url, user_answer in incorrect_questions %}
+                                {% if loop.index % 4 == 1 %}
+                                    {% if not loop.first %}
+                                        </div>
+                                    {% endif %}
+                                    <div class="row justify-content-center">
+                                {% endif %}
+                                <div class="text-center top-pad">
+                                    <a href="{{ question_url }}">
+                                        <img src="{{ image_url }}" alt="{{ question }}" class="img-fluid score-img">
+                                    </a>
+                                    <div class="mt-3 text-center justify-content-center">
+                                        <div style="color: red;">Your Answer:</div>
+                                        <div style="max-width: 250px;">{{ user_answer }}</div>
+                                        <div class="mt-3" style="color: green;">Correct Answer:</div>
+                                        <div style="max-width: 250px;">{{ correct_answer }}</div>
                                     </div>
-                                {% endfor %}
-                            </div>
+                                </div>
+                                {% if loop.index % 4 == 0 or loop.last %}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
                         </div>
                     {% endif %}
                 </div>
             </div>
         </div>
     </div>
-    <div class="row mt-5">
+    <div class="row mt-5 top-pad">
         <div class="col-md-6 text-center">
             <button class="btn btn-secondary" onclick="window.location.href='{{ url_for('welcome') }}'">Back to Home</button>
         </div>

@@ -48,6 +48,11 @@ img.no-border{
 img.score-img{
     border-radius: 10px;
     border: 1px solid black;
+    width: 200px;
+    height: 200px;
+    max-width: 200px;
+    margin-left: 24px;
+    margin-right: 24px;
 }
 
 button{

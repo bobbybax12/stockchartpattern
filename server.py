@@ -95,6 +95,7 @@ def quiz_score():
                     score += 1
                 else:
                     correct_answer = ', '.join(correct_answer)
+                    user_answer = ', '.join(user_answer)
                     incorrect_questions.append((key, correct_answer, get_image_url(key), get_question_url(key), user_answer))
             else:
                 if user_answer == correct_answer:
